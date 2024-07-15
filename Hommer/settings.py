@@ -33,18 +33,18 @@ DEBUG = True
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:8000',
-    'https://ebookproject.onrender.com',
+    'https://homeper.onrender.com',
 ]
 
 
 ALLOWED_HOSTS = [
     'localhost',
-    'ebookproject.onrender.com',
+    'homeper.onrender.com',
 ]
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:8000',
-    'https://ebookproject.onrender.com',
+    'https://homeper.onrender.com',
 ]
 
 ALLOWED_HOSTS = ['*']
