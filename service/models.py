@@ -3,12 +3,13 @@ from django.db import models
 from customer.models import Customer
 
 STAR_CHOICE={
-   ( '1','⭐'),
-    ('2','⭐⭐'),
-    ('3','⭐⭐⭐'),
-    ('4','⭐⭐⭐⭐'),
-    ('5','⭐⭐⭐⭐⭐')
+   ( 1,'⭐'),
+    (2,'⭐⭐'),
+    (3,'⭐⭐⭐'),
+    (4,'⭐⭐⭐⭐'),
+    (5,'⭐⭐⭐⭐⭐')
 }
+
 # Create your models here.
 class Service(models.Model):
     Name=models.CharField(max_length=30)
@@ -29,7 +30,6 @@ class ReviewModel(models.Model):
     textreview=models.TextField()
 
 
-    def __str__(self):
-        return f"{self.service.Name}   {self.customer.name}"
+   
 
 

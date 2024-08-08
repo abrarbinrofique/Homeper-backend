@@ -9,7 +9,6 @@ from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
 from django.utils.encoding import force_bytes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
-
 #for email sending
 from django.template.loader import render_to_string
 from django.core.mail import EmailMultiAlternatives
@@ -18,26 +17,24 @@ from django.shortcuts import redirect
 from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import login,logout
+from django.http import JsonResponse
 # Create your views here.
 class CustomerViewsets(viewsets.ModelViewSet):
-    queryset=models.Customer.objects.all()
-    serializer_class=serializers.CustomerSerializer
-    permission_classes = [IsAuthenticated]
+    queryset = models.Customer.objects.all()
+    serializer_class = serializers.CustomerSerializer
+    # permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
-        user_id = self.request.data.get('user')  # Get user_id from request data
+        user_id = self.request.data.get('user')
         user = User.objects.get(id=user_id)
         serializer.save(user=user)
 
-    
-
     def get_queryset(self):
-        queryset= super().get_queryset()
-        user_id=self.request.query_params.get('user_id')
+        queryset = super().get_queryset()
+        user_id = self.request.query_params.get('user_id')
         if user_id:
-            queryset=queryset.filter(user_id=user_id)
+            queryset = queryset.filter(user_id=user_id)
         return queryset
-
 
 
 class UserRegistraitionView(APIView):
@@ -104,7 +101,7 @@ class UserLoginAPIView(APIView):
 
 class UserLogoutview(APIView):
        def get(self,request):
-              request.user.auth_token.delete()
+            #   request.user.token.delete()
               logout(request)
               return redirect ('login')
               
@@ -113,18 +110,27 @@ class UserLogoutview(APIView):
 
 class UpdateCustomerAdminStatus(APIView):
     def post(self, request, customer_id):
-        try:
-            customer =models.Customer.objects.get(pk=customer_id)
-        except models.Customer.DoesNotExist:
-            return Response({"error": "Customer not found"}, status=status.HTTP_404_NOT_FOUND)
-        if customer.is_satisfy == False: 
-            customer.is_satisfy = True
-            return Response({"message": "Customer admin status updated successfully"})
-            customer.save()
-        else:
-              customer.is_satisfy =False
-              customer.save()
-              return Response({"message": "Customer hasbeen removed from admin pannel successfully"})
-     
+        # if not request.user.is_superuser:
+        #     return JsonResponse({'status': 'error', 'message': 'Unauthorized'}, status=403)
 
+        try:
+            user = User.objects.get(id=customer_id)
+            if(user.is_staff == True):
+                 user.is_staff=False 
+                 user.save()
+            else:
+                  user.is_staff=True
+                  user.save()
+                 
+
+           
+            
+            return JsonResponse({'status': 'success', 'message': 'User is now an admin.'})
+        except User.DoesNotExist:
+            return JsonResponse({'status': 'error', 'message': 'User does not exist.'}, status=404)
         
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = serializers.UserSerializer

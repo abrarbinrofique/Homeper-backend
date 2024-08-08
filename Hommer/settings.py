@@ -7,7 +7,7 @@ For more information on this file, see
 https://docs.djangoproject.com/en/4.2/topics/settings/
 
 For the full list of settings and their values, see
-https://docs.djangoproject.com/en/4.2/ref/settings/
+https://docs.djangoproject.com/en/4.2/ref/settings/ 
 """
 from pathlib import Path
 import os
@@ -27,28 +27,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:8000',
-    'https://homeper.onrender.com',
-]
-
-
-ALLOWED_HOSTS = [
-    'localhost',
-    'homeper.onrender.com',
-]
-
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:8000',
-    'https://homeper.onrender.com',
-]
-
-ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -70,6 +50,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -77,12 +58,25 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+    
 ]
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-   " http://127.0.0.1:5500",
+
+ALLOWED_HOSTS = ["*"]
+# CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1', 'http://localhost',"https://homeper.onrender.com"]
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://127.0.0.1',
+    'http://localhost',
+    'https://homeper.onrender.com'
 ]
+
+# CORS settings
+# CORS_ALLOWED_ORIGINS = [
+#     "http://127.0.0.1:5500",
+#     "https://homeper.onrender.com",
+# ]
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'Hommer.urls'
 
@@ -117,6 +111,14 @@ DATABASES = {
 }
 
 
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -136,15 +138,13 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # REST_FRAMEWORK = {
-#     'DEFAULT_AUTHENTICATION_CLASSES': (
-#         'rest_framework.authentication.TokenAuthentication',  # Example token authentication
-#         'rest_framework.authentication.SessionAuthentication',  # Example session authentication
-#     ),
-#     'DEFAULT_PERMISSION_CLASSES': (
-#         'rest_framework.permissions.IsAuthenticated',
-#     ),
+#    'DEFAULT_AUTHENTICATION_CLASSES': (
+#        'rest_framework.authentication.TokenAuthentication',
+#    ),
+#    'DEFAULT_PERMISSION_CLASSES': (
+#         'rest_framework.permissions.IsAdminUser'
+#    ),
 # }
-
 
 
 # Internationalization
