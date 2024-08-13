@@ -120,8 +120,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Hommer.wsgi.application'
 
 SECRET_KEY = env("SECRET_KEY")
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+
 
 DATABASES = {
     'default': dj_database_url.config(
