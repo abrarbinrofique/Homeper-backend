@@ -1,6 +1,7 @@
 from typing import Any
 from django.db import models
 from customer.models import Customer
+from cloudinary.models import CloudinaryField
 
 STAR_CHOICE={
    ( 1,'⭐'),
@@ -14,7 +15,7 @@ STAR_CHOICE={
 class Service(models.Model):
     Name=models.CharField(max_length=30)
     price=models.CharField(max_length=20)
-    image=models.ImageField(upload_to='service/media/')
+    image = CloudinaryField('image')
     description=models.TextField()
 
     def __str__(self):
