@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 from pathlib import Path
 import os
-
+import cloudinary_storage
 import dj_database_url
 
 import environ
@@ -45,7 +45,9 @@ INSTALLED_APPS = [
     'contactus',
     'service',
     'serviceslot',
-    'customer'
+    'customer',
+    'cloudinary',
+    'cloudinary_storage'
 
 ]
 
@@ -202,3 +204,12 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = env("EMAIL")
 EMAIL_HOST_PASSWORD =env('EMAIL_PASSWORD')
+
+CLOUDINARY_STORAGE={
+
+    'CLOUD_NAME':'dk2vgd0dv',
+    'API_KEY':'585292437313575',
+    'API_SECRET':'C5MqCGPlWqcc6tgKkmGKwacBiCY'
+}
+
+DEFAULT_FILE_STORAGE='cloudinary_storage.storage.MediaCloudinaryStorage'
