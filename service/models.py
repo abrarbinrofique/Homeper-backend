@@ -15,7 +15,7 @@ STAR_CHOICE={
 class Service(models.Model):
     Name=models.CharField(max_length=30)
     price=models.CharField(max_length=20)
-    image = CloudinaryField('image')
+    image = models.ImageField()
     description=models.TextField()
 
     def __str__(self):
