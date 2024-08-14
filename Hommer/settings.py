@@ -205,9 +205,9 @@ EMAIL_HOST_USER = env("EMAIL")
 EMAIL_HOST_PASSWORD =env('EMAIL_PASSWORD')
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': env('CLOUD_NAME'),
-    'API_KEY': env('API_KEY'),
-    'API_SECRET': env('API_SECRET'),
+    'CLOUD_NAME': 'dk2vgd0dv',
+    'API_KEY': '585292437313575',
+    'API_SECRET': 'C5MqCGPlWqcc6tgKkmGKwacBiCY',
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
