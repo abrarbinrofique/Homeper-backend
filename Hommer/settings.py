@@ -11,8 +11,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 from pathlib import Path
 import os
-import cloudinary_storage
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 import dj_database_url
+
 
 import environ
 env = environ.Env()
@@ -47,7 +50,6 @@ INSTALLED_APPS = [
     'serviceslot',
     'customer',
     'cloudinary',
-    'cloudinary_storage'
 
 ]
 
@@ -204,10 +206,18 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = env("EMAIL")
 EMAIL_HOST_PASSWORD =env('EMAIL_PASSWORD')
 
-CLOUDINARY_STORAGE = {
-    'Cloud_Name': 'dk2vgd0dv',
-    'API_Key': '585292437313575',
-    'API_Secret': 'C5MqCGPlWqcc6tgKkmGKwacBiCY',
-}
+# CLOUDINARY_STORAGE = {
+#     'Cloud_Name': 'dk2vgd0dv',
+#     'API_Key': '585292437313575',
+#     'API_Secret': 'C5MqCGPlWqcc6tgKkmGKwacBiCY',
+# }
+cloudinary.config(
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+cloud_name="dk2vgd0dv",
+api_key="585292437313575",
+api_secret="C5MqCGPlWqcc6tgKkmGKwacBiCY",
+
+)
+
+
+# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
