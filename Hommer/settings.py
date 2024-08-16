@@ -12,8 +12,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 import cloudinary
-import cloudinary.uploader
-import cloudinary.api
 import dj_database_url
 
 
@@ -211,6 +209,9 @@ EMAIL_HOST_PASSWORD =env('EMAIL_PASSWORD')
 #     'API_Key': '585292437313575',
 #     'API_Secret': 'C5MqCGPlWqcc6tgKkmGKwacBiCY',
 # }
+
+CLOUDINARY_URL='cloudinary://585292437313575:C5MqCGPlWqcc6tgKkmGKwacBiCY@dk2vgd0dv'
+CLOUDINARY_URL="cloudinary://585292437313575:C5MqCGPlWqcc6tgKkmGKwacBiCY@dk2vgd0dv?secure_distribution=mydomain.com&upload_prefix=myprefix.com"
 cloudinary.config(
 
 cloud_name="dk2vgd0dv",
@@ -218,6 +219,6 @@ api_key="585292437313575",
 api_secret="C5MqCGPlWqcc6tgKkmGKwacBiCY",
 
 )
-
-
+import cloudinary.uploader
+import cloudinary.api
 # DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
