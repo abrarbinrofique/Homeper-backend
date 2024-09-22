@@ -125,7 +125,7 @@ SECRET_KEY = env("SECRET_KEY")
 DATABASES = {
     'default': dj_database_url.config(
         # Replace this value with your local database's connection string.
-        default='postgresql://homper_database_user:eNPYPYUnGLchDOYvkSW1dNdJxeW11hUy@dpg-cqup40o8fa8c73f89fb0-a.oregon-postgres.render.com/homper_database'
+        default='postgresql://homper_postgre_database_user:nAXPqYCGhZ5RDWrEe6vQcO3TSxspvSag@dpg-cro8rb2j1k6c739fndkg-a.oregon-postgres.render.com/homper_postgre_database'
         
     )
 }
