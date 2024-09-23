@@ -63,7 +63,7 @@ MIDDLEWARE = [
     
 ]
 
-ALLOWED_HOSTS = ['https://homeper.onrender.com','http://localhost','http://127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
     'http://127.0.0.1',
@@ -71,13 +71,9 @@ CSRF_TRUSTED_ORIGINS = [
     'https://homeper.onrender.com'
 ]
 
-# CORS settings
-# CORS_ALLOWED_ORIGINS = [
-#     "http://127.0.0.1:5500",
-#     "https://homeper.onrender.com",
-# ]
+
 CORS_ALLOW_ALL_ORIGINS = True
-# CORS_ALLOW_CREDENTIALS = True
+
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_METHODS = [
     'DELETE',
