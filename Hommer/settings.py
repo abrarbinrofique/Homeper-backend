@@ -66,7 +66,7 @@ CSRF_TRUSTED_ORIGINS = [
     'https://homeper.onrender.com'
 ]
 
-DEBUG=True
+DEBUG=False
 ALLOWED_HOSTS = ['*']
 
 CORS_ALLOW_ALL_ORIGINS = True
