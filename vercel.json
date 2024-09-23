@@ -1,17 +1,15 @@
 {
-    "builds": [
-      {
-        "src": "Hommer/wsgi.py",
-        "use": "@vercel/python",
-        "config": { "maxLambdaSize": "15mb", "runtime": "python3.10" }
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "Hommer/wsgi.py"
-      }
-    ]
-  }
-  
-  
+  "builds": [
+    {
+      "src": "Hommer/wsgi.py",
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "50mb", "runtime": "python3.10" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "Hommer/wsgi.py"
+    }
+  ]
+}
