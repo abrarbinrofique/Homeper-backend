@@ -63,12 +63,13 @@ MIDDLEWARE = [
     
 ]
 
+ALLOWED_HOSTS = ["*"]
+
 CSRF_TRUSTED_ORIGINS = [
     'http://127.0.0.1',
     'http://localhost',
    
 ]
-
 
 
 CORS_ALLOW_ALL_ORIGINS = True
