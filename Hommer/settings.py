@@ -31,6 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Application definition
 
 INSTALLED_APPS = [
+    "whitenoise.runserver_nostatic",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,8 +50,10 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -66,8 +69,8 @@ CSRF_TRUSTED_ORIGINS = [
     'https://homeper.onrender.com'
 ]
 
-DEBUG=False
-ALLOWED_HOSTS = ['*']
+DEBUG=True
+ALLOWED_HOSTS = ['127.0.0.1','.vercel.app']
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
@@ -108,17 +111,20 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Hommer.wsgi.application'
+WSGI_APPLICATION = 'Hommer.wsgi.app'
 
 SECRET_KEY = env("SECRET_KEY")
 
 
 DATABASES = {
-    'default': dj_database_url.config(
-        # Replace this value with your local database's connection string.
-        default='postgresql://homper_postgre_database_user:nAXPqYCGhZ5RDWrEe6vQcO3TSxspvSag@dpg-cro8rb2j1k6c739fndkg-a.oregon-postgres.render.com/homper_postgre_database'
-        
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
+        'USER': 'postgres.uczxbuxgroafzkiffdso',
+        'PASSWORD': 'CMw#p.3F-SLkSjC',
+        'HOST': 'aws-0-us-east-1.pooler.supabase.com',
+        'PORT': '6543',
+}
 }
 
 
@@ -162,6 +168,7 @@ USE_TZ = True
 
 
 STATIC_URL = 'static/'
+STATIC_ROOT=BASE_DIR / 'staticfiles'
 
 # Define the base URL for serving media files
 MEDIA_URL = '/media/'

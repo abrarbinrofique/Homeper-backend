@@ -1,1 +1,4 @@
 Hommer/.env
+myenv/
+db.sqlite3
+__pycache__/
