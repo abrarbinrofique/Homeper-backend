@@ -63,7 +63,7 @@ MIDDLEWARE = [
     
 ]
 
-ALLOWED_HOSTS = ['https://homeper.onrender.com','http://localhost','http://127.0.0.1','*']
+ALLOWED_HOSTS = ['https://homeper.onrender.com','http://localhost','http://127.0.0.1']
 
 CSRF_TRUSTED_ORIGINS = [
     'http://127.0.0.1',
