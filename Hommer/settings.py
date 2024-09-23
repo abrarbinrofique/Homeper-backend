@@ -63,17 +63,15 @@ MIDDLEWARE = [
     
 ]
 
-ALLOWED_HOSTS = ['*']
-
 CSRF_TRUSTED_ORIGINS = [
     'http://127.0.0.1',
     'http://localhost',
-    'https://homeper.onrender.com'
+   
 ]
 
 
 
-
+CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_METHODS = [
     'DELETE',
