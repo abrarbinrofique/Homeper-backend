@@ -63,7 +63,7 @@ class UserRegistraitionView(APIView):
       
 
 
-      def activate(request,uid64,token):
+def activate(request,uid64,token):
             try:
                   uid=urlsafe_base64_decode(uid64).decode()
                   user=User._default_manager.get(pk=uid)
