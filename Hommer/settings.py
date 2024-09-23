@@ -29,8 +29,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-ALLOWED_HOSTS = ['*']
+DEBUG = False
+ALLOWED_HOSTS = ['homeper.onrender.com', 'localhost', '127.0.0.1']
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -66,8 +67,9 @@ MIDDLEWARE = [
 CSRF_TRUSTED_ORIGINS = [
     'http://127.0.0.1',
     'http://localhost',
-   
+    'https://homeper.onrender.com'
 ]
+
 
 
 CORS_ALLOW_ALL_ORIGINS = True
