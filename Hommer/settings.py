@@ -21,20 +21,13 @@ environ.Env.read_env()
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 DEBUG=True
-ALLOWED_HOSTS = ["127.0.0.1", ".vercel.app", ".now.sh"]
+ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
 
 CORS_ALLOW_ALL_ORIGINS = True
 
 LOGIN_URL = 'http://127.0.0.1:5500/login.html'
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-
-# SECURITY WARNING: don't run with debug turned on in production!
-
-# Application definition
 
 INSTALLED_APPS = [
     "whitenoise.runserver_nostatic",
@@ -169,11 +162,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = env("EMAIL")
 EMAIL_HOST_PASSWORD =env('EMAIL_PASSWORD')
 
-# CLOUDINARY_STORAGE = {
-#     'Cloud_Name': 'dk2vgd0dv',
-#     'API_Key': '585292437313575',
-#     'API_Secret': 'C5MqCGPlWqcc6tgKkmGKwacBiCY',
-# }
+
 
 CLOUDINARY_URL='cloudinary://585292437313575:C5MqCGPlWqcc6tgKkmGKwacBiCY@dk2vgd0dv'
 CLOUDINARY_URL="cloudinary://585292437313575:C5MqCGPlWqcc6tgKkmGKwacBiCY@dk2vgd0dv?secure_distribution=mydomain.com&upload_prefix=myprefix.com"
@@ -186,4 +175,3 @@ api_secret="C5MqCGPlWqcc6tgKkmGKwacBiCY",
 )
 import cloudinary.uploader
 import cloudinary.api
-# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
