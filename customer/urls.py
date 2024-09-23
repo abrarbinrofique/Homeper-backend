@@ -1,6 +1,7 @@
 from django.urls import path, include
 from . import views
 from rest_framework.routers import DefaultRouter
+from django.contrib.auth.views import LoginView
 
 router = DefaultRouter()
 
@@ -10,7 +11,7 @@ router.register('', views.CustomerViewsets)
 
 urlpatterns = [
     path('userlist/',views.UserViewSet.as_view({'get': 'list'}), name='userlist'),
-    path('login/',views.UserLoginAPIView.as_view(template_name='login.html'),name='login'),
+     path('login/', LoginView.as_view(template_name='login.html'), name='login'),
     path('logout/',views.UserLogoutview.as_view(),name='logout'),
     path('register/',views.UserRegistraitionView.as_view(),name='register'),
     path('active/<uid64>/<token>/',views.activate,name="active"),
