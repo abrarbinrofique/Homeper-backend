@@ -69,9 +69,12 @@ MIDDLEWARE = [
 CORS_ORIGIN_WHITELIST = (
     "http://localhost:3000",
     "http://localhost:8000",
+    "https://your-vercel-app-name.vercel.app",
 )
 
-CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
+
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "https://your-vercel-app-name.vercel.app"]
+
 ROOT_URLCONF = 'Hommer.urls'
 
 TEMPLATES = [
