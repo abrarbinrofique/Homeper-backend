@@ -18,8 +18,6 @@ import dj_database_url
 import environ
 env = environ.Env()
 environ.Env.read_env()
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -29,8 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-ALLOWED_HOSTS = ['homeper.onrender.com']
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -69,7 +66,8 @@ CSRF_TRUSTED_ORIGINS = [
     'https://homeper.onrender.com'
 ]
 
-
+DEBUG=True
+ALLOWED_HOSTS = ['*']
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
