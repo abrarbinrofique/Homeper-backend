@@ -69,13 +69,4 @@ This project is deployed using Vercel and Supabase for database management.
 - **Live Frontend**: [Homper Frontend](https://abrarbinrofique.github.io/Homper-frontend/)
 - **Live Backend**: Hosted on Vercel
 
-## License
 
-This project is licensed under the MIT License.
-"""
-
-# Saving the content to a file
-with open("/mnt/data/README_Homper.md", "w") as file:
-    file.write(homper_readme)
-
-"/mnt/data/README_Homper.md"
