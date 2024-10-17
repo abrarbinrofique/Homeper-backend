@@ -1,6 +1,3 @@
-# Creating the basic structure for a README.md file for the Homper project based on the user's provided information.
-
-homper_readme = """
 # Homper - A Home Service System
 
 Homper is a comprehensive platform designed to provide home cleaning, plumbing, and other household services. Users can book services, manage service slots, and contact service providers directly through the platform.
@@ -24,7 +21,7 @@ Homper is a comprehensive platform designed to provide home cleaning, plumbing, 
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/abrarbinrofique/Homeper-backendv.git
+    git clone git@github.com:abrarbinrofique/Homeper-backend.git
     ```
 
 2. Navigate to the project directory:
