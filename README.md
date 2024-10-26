@@ -5,9 +5,14 @@ Homper is a comprehensive platform designed to provide home cleaning, plumbing, 
 
 ## Features
 
+- **User Signup and Email Confirmation**: New users register and receive an email confirmation link. Upon clicking the link, they are redirected to the login page.
+- **Role-Based Access**:
+  - **Customers** can view service details, post reviews, and book services.
+  - **Admins** can add services and manage users.
+  - **Admin Promotion**: Admins can promote other users to admin status, allowing them to add new services.
 - **Book Services**: Users can book home services like cleaning, plumbing, and more.
-- **Manage Service Slots**: Allocate time slots for services and get reminders.
-- **Contact Us**: Users can reach out to the customer support team via the contact form.
+- **Manage Service Slots**: Allocate time slots for services and receive reminders.
+- **Contact Us**: Users can reach out to customer support via the contact form.
 - **User Profiles**: Each user has a profile that includes personal information and booking history.
 
 ## Technologies Used
@@ -27,7 +32,7 @@ Homper is a comprehensive platform designed to provide home cleaning, plumbing, 
 
 2. Navigate to the project directory:
     ```bash
-    cd Homeper-backendv
+    cd Homeper-backend
     ```
 
 3. Install the required dependencies:
@@ -35,39 +40,50 @@ Homper is a comprehensive platform designed to provide home cleaning, plumbing, 
     pip install -r requirements.txt
     ```
 
-4. Set up Supabase as the database (instructions can be found in the Supabase documentation).
+4. Configure the environment variables for email settings and database credentials.
 
-5. Run the Django development server:
+5. Set up Supabase as the database (refer to Supabase documentation).
+
+6. Run the Django development server:
     ```bash
     python manage.py runserver
     ```
 
-## Project Structure
+## API Endpoints
 
-- **Hommer/**: Core app for handling services and bookings.
-- **contactus/**: Handles customer inquiries and feedback.
-- **customer/**: Manages user profiles and customer-related data.
-- **service/**: Contains logic for home services, service categories, etc.
-- **serviceslot/**: Manages service booking slots.
-- **staticfiles/**: Static assets like CSS and JS files.
+### Service Endpoints
+- List of Services: `https://homeper-backend.vercel.app/service/list/`
+- See Service Reviews: `https://homeper-backend.vercel.app/service/review/`
+- Give a Service Review: `https://homeper-backend.vercel.app/service/review/?service_id=${param}`
+
+### Customer Endpoints
+- Customer Profile Information: `https://homeper-backend.vercel.app/customer/${customerId}/`
+- List of Customers: `https://homeper-backend.vercel.app/customer/`
+- Make a User Admin: `https://homeper-backend.vercel.app/customer/makeadmin/${customerId}/`
+
+### Service Slot Endpoints
+- See Services Booked by Customer: `https://homeper-backend.vercel.app/serviceslot/?customer_id=${customerId}`
+- Book a Service: `https://homeper-backend.vercel.app/serviceslot/`
 
 ## Requirements
 
-Here are the main dependencies used in this project (as listed in `requirements.txt`):
-
+Dependencies include:
 - Django
 - djangorestframework
 - django-cloudinary-storage
 - django-cors-headers
 - psycopg2-binary (for PostgreSQL)
 - requests
-- and more...
 
 ## Deployment
 
-This project is deployed using Vercel and Supabase for database management.
+This project is deployed using Vercel and Supabase.
 
 - **Live Frontend**: [Homper Frontend](https://abrarbinrofique.github.io/Homper-frontend/)
 - **Live Backend**: Hosted on Vercel
 
+## Authentication Flow
 
+1. **Signup**: Users register and receive a confirmation email.
+2. **Email Confirmation**: Upon clicking the link, users are redirected to the login page.
+3. **Login**: Once logged in, users can access services based on their role (Admin/Customer).
