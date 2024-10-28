@@ -13,7 +13,7 @@ class ServiceslotSerializer(serializers.ModelSerializer):
         # exclude=['service_status']
 
 
-# class ordersinfoseralizer(serializers.ModelSerializer):
-#     class Meta:
-#         model=models.customerorderinfo
-#         fieds='__all__'
+class ordersinfoseralizer(serializers.ModelSerializer):
+    class Meta:
+        model=models.customerorderinfo
+        fieds='__all__'
