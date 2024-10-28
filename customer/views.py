@@ -109,10 +109,7 @@ class UserLogoutview(APIView):
                      
 
 class UpdateCustomerAdminStatus(APIView):
-    def post(self, request, customer_id):
-        # if not request.user.is_superuser:
-        #     return JsonResponse({'status': 'error', 'message': 'Unauthorized'}, status=403)
-
+    def post(self, customer_id):
         try:
             user = User.objects.get(id=customer_id)
             if(user.is_staff == True):

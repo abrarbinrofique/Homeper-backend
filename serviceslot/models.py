@@ -22,7 +22,17 @@ class ServiceSlot(models.Model):
     customer=models.ForeignKey(Customer, on_delete=models.CASCADE)
     service=models.ForeignKey(Service, on_delete=models.CASCADE)
     created_time=models.TimeField(auto_now_add=True)
+    main_payment=models.IntegerField(blank=True,null=True)
     service_status=models.CharField(choices=selectstatus, max_length=50,default='pending',blank=True,null=True)
+
+
+
+# class customerorderinfo(models.Model):
+#     name=models.CharField(max_length=20)
+#     email=models.CharField(max_length=50)
+#     phone=models.CharField(max_length=18)
+#     address=models.CharField(max_length=200)
+#     payment_amount=models.IntegerField()
 
 
    

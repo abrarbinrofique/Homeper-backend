@@ -11,3 +11,9 @@ class ServiceslotSerializer(serializers.ModelSerializer):
         model=models.ServiceSlot
         fields='__all__'
         # exclude=['service_status']
+
+
+# class ordersinfoseralizer(serializers.ModelSerializer):
+#     class Meta:
+#         model=models.customerorderinfo
+#         fieds='__all__'
