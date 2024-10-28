@@ -27,12 +27,12 @@ class ServiceSlot(models.Model):
 
 
 
-class customerorderinfo(models.Model):
-    name=models.CharField(max_length=20)
-    email=models.CharField(max_length=50)
-    phone=models.CharField(max_length=18)
-    address=models.CharField(max_length=200)
-    payment_amount=models.IntegerField()
+# class customerorderinfo(models.Model):
+#     name=models.CharField(max_length=20)
+#     email=models.CharField(max_length=50)
+#     phone=models.CharField(max_length=18)
+#     address=models.CharField(max_length=200)
+#     payment_amount=models.IntegerField()
 
 
    
