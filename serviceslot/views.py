@@ -24,10 +24,10 @@ class ServiceslotViewset(viewsets.ModelViewSet):
         return queryset
 
 
-# class orderview(viewsets.ModelViewSet):
+class orderview(viewsets.ModelViewSet):
 
-#     queryset=models.customerorderinfo.objects.all()
-#     serializer_class=serializers.ordersinfoseralizer
+    queryset=models.customerorderinfo.objects.all()
+    serializer_class=serializers.ordersinfoseralizer
 
 #     def post(self,request):
 
