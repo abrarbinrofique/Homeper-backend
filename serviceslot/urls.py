@@ -7,6 +7,7 @@ router = DefaultRouter()
 
 
 router.register('',views.ServiceslotViewset)
+router.register('order/',views.orderViewset)
 
 urlpatterns = [
     path("",include(router.urls)),
