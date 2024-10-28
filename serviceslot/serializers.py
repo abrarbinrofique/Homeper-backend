@@ -16,4 +16,4 @@ class ServiceslotSerializer(serializers.ModelSerializer):
 class ordersinfoseralizer(serializers.ModelSerializer):
     class Meta:
         model=models.customerorderinfo
-        fieds='__all__'
+        fields='__all__'
