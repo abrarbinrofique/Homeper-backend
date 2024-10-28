@@ -167,7 +167,7 @@ EMAIL_HOST_PASSWORD =env('EMAIL_PASSWORD')
 
 
 CLOUDINARY_URL='cloudinary://585292437313575:C5MqCGPlWqcc6tgKkmGKwacBiCY@dk2vgd0dv'
-CLOUDINARY_URL="cloudinary://585292437313575:C5MqCGPlWqcc6tgKkmGKwacBiCY@dk2vgd0dv?secure_distribution=mydomain.com&upload_prefix=myprefix.com"
+# CLOUDINARY_URL="cloudinary://585292437313575:C5MqCGPlWqcc6tgKkmGKwacBiCY@dk2vgd0dv?secure_distribution=mydomain.com&upload_prefix=myprefix.com"
 cloudinary.config(
 
 cloud_name="dk2vgd0dv",
