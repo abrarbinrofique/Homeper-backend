@@ -12,7 +12,9 @@ selecttime={
 selectstatus={
     ('pending','pending'),
     ('cancel','cancel'),
-    ('Done',('Done'))
+    ('Done','Done'),
+    ('paid','paid'),
+    ('Cash on delivery','Cash on delivery')
 }
 
 

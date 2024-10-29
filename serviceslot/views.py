@@ -4,10 +4,10 @@ from .import serializers
 from rest_framework import viewsets
 from sslcommerz_lib import SSLCOMMERZ
 import random 
-from rest_framework.decorators import action
+from rest_framework.decorators import action,api_view
 from rest_framework.response import Response
 from rest_framework import status
-
+from django.shortcuts import redirect
 # Create your views here.
 
 
@@ -45,7 +45,7 @@ class orderview(viewsets.ModelViewSet):
           if order.payment_amount>=serviceslots.main_payment:
             
             
-            payment_response=self.payment(order.id)
+            payment_response=self.payment(order.id,pk)
             if 'payment_url' in payment_response:
                     return Response({
                         'order': serializer.data,
@@ -69,10 +69,7 @@ class orderview(viewsets.ModelViewSet):
         
 
       
-          
-
-
-    def payment(self,pk):
+    def payment(self,pk,ss):
        
        order =models.customerorderinfo.objects.get(pk=pk) 
        print(order)  
@@ -83,9 +80,9 @@ class orderview(viewsets.ModelViewSet):
        'total_amount' : order.payment_amount,
        'currency': "BDT",
        'tran_id' : random.randint(1000, 9999),
-       'success_url': "https://abrarbinrofique.github.io/Homper-frontend/",
-       'fail_url' : "https://abrarbinrofique.github.io/Homper-frontend/bookiingslip.html",
-       'cancel_url' : "https://abrarbinrofique.github.io/Homper-frontend/bookiingslip.html",
+       'success_url': f"http://127.0.0.1:8000/serviceslot/purchase/{ss}/paymentsuccess/",
+       'fail_url' : "http://127.0.0.1:8000/serviceslot/purchase/paymentfailed/",
+       'cancel_url' : "http://127.0.0.1:8000/serviceslot/purchase/paymentfailed/",
        'emi_option' : 0,
        'cus_name' :order.name,
        'cus_email' :order.email, 
@@ -108,10 +105,39 @@ class orderview(viewsets.ModelViewSet):
             return {'payment_url': response['GatewayPageURL']}
        else:
             return {'error': 'Payment session could not be created'}
+       
 
+    @action(detail=True, methods=['get','post'])
+    def paymentsuccess(self,request,pk,):
+        serviceslots=models.ServiceSlot.objects.get(pk=pk)
+        if serviceslots.service_status!='paid':
+          serviceslots.service_status='paid'
+          serviceslots.save()
+        return redirect('https://abrarbinrofique.github.io/Homper-frontend/')
+
+    @action(detail=True, methods=['get','post'])
+    def cod(self,request,pk,):
+        serviceslots=models.ServiceSlot.objects.get(pk=pk)
+        if serviceslots.service_status!='Cash on delivery':
+          serviceslots.service_status='Cash on delivery'
+          serviceslots.save()
+         
+        return redirect('https://abrarbinrofique.github.io/Homper-frontend/bookiingslip.html')
     
-    # Return the payment URL from the response
-    # if response['status'] == 'success':
-    #     return response['gateway_page_url']  # Assuming 'gateway_page_url' is in the response
-    #    else:
-    #     return {'error': 'Payment session could not be created'}
+
+    @action(detail=False, methods=['get', 'post'])
+    def paymentfailed(self, request):
+
+        return redirect('https://abrarbinrofique.github.io/Homper-frontend/bookiingslip.html')
+    
+    
+
+
+    @action(detail=False, methods=['get', 'post'])
+    def paymentfailed(self, request):
+
+        return redirect('https://abrarbinrofique.github.io/Homper-frontend/bookiingslip.html')
+    
+
+
+# http://127.0.0.1:8000/serviceslot/purchase/17/post/

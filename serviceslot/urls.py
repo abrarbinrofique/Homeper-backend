@@ -10,5 +10,6 @@ router.register('book',views.ServiceslotViewset)
 router.register('purchase',views.orderview)
 urlpatterns = [
     path("",include(router.urls)),
+ 
     
 ]
